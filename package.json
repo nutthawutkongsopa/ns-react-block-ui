@@ -1,0 +1,39 @@
+{
+  "name": "ns-react-block-ui",
+  "version": "1.0.0",
+  "description": "A react component for blocking UI.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "build": "rm -rf /dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nutthawutkongsopa/ns-react-block-ui.git"
+  },
+  "keywords": [
+    "React",
+    "BlockUI",
+    "ReactComponent",
+    "Component"
+  ],
+  "author": "Nutthawut Kongsopa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nutthawutkongsopa/ns-react-block-ui/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
