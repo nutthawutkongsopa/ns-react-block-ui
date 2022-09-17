@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import DefaultLoader from './Loader';
 import { BlockUIProps } from './types';
+import "./style.scss"
 
 export const BlockUI: React.FC<BlockUIProps> = ({
     loader = <DefaultLoader />,
