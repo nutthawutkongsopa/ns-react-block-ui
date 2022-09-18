@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import { BlockUI } from './BlockUI'
+import { BlockUI, setBlockUIDefaultProps } from './BlockUI'
 import Loader from './Loader'
 
 describe("BlockUI", () => {
-    test("renders the Button component", () => {
+    test("renders the BlockUI component", () => {
         render(<BlockUI />);
     });
 
@@ -25,6 +25,11 @@ describe("BlockUI", () => {
         !render(<BlockUI message="test message" blocking={true}>
             <div>child1</div>
         </BlockUI>).getAllByText("test message");
+    });
+
+    test("renders the BlockUI component with defaultProps", () => {
+        setBlockUIDefaultProps({ message: "This is default message" })
+        render(<BlockUI blocking={true} />).getAllByText("This is default message");
     });
 });
 

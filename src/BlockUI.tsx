@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import DefaultLoader from './Loader';
-import { BlockUIProps } from './types';
+import { BlockUIProps, BlockUIPropsBase } from './types';
 import "./style.scss"
 
-export const BlockUI: React.FC<BlockUIProps> = ({
+const BlockUI: React.FC<BlockUIProps> = ({
     loader = <DefaultLoader />,
     message = "",
     children = <></>,
@@ -12,8 +12,8 @@ export const BlockUI: React.FC<BlockUIProps> = ({
     ...props
 }) => {
     const [overlayAnimateClass, setOverlayAnimateClass] = useState("")
-    const [isBlocking, setIsBlocking] = useState(blocking)
-    const refEl = useRef<HTMLDivElement>(null)
+    const [isBlocking, setIsBlocking] = useState(blocking);
+    const refEl = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (blocking) {
             if (refEl.current?.contains(document.activeElement)) {
@@ -38,7 +38,7 @@ export const BlockUI: React.FC<BlockUIProps> = ({
         <div className={`ns-block-ui ${isBlocking ? "blocking" : ""} ${props.className || ""}`} aria-busy={isBlocking} ref={refEl}>
             {children}
             {isBlocking && <div className={`ns-block-ui-container ${overlayAnimateClass}`}>
-                <div className={`ns-block-ui-overlay`}></div>
+                <div className={`ns-block-ui-overlay`} style={overlayStyle}></div>
                 <div className={`ns-block-ui-loader-container`}>
                     {React.isValidElement(loader) ? loader : <DefaultLoader />}
                     {message}
@@ -48,3 +48,9 @@ export const BlockUI: React.FC<BlockUIProps> = ({
         </div>
     )
 }
+
+export const setBlockUIDefaultProps = (props: BlockUIPropsBase) => {
+    BlockUI.defaultProps = props
+}
+
+export { BlockUI }
