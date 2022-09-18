@@ -4,7 +4,7 @@ export interface BlockUIPropsBase {
     blocking?: boolean;
     message?: string | React.ReactNode;
     overlayStyle?: React.CSSProperties;
-    loader?: React.ReactNode;
+    loader?: "default" | React.ReactNode;
     style?: React.CSSProperties;
     className?: string;
     mode?: "contain" | "stretch"

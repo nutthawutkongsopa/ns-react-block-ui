@@ -31,6 +31,10 @@ describe("BlockUI", () => {
         setBlockUIDefaultProps({ message: "This is default message" })
         render(<BlockUI blocking={true} />).getAllByText("This is default message");
     });
+
+    test("renders custom loading component", () => {
+        render(<BlockUI blocking={true} loader={<div>TestLoader</div>} />).getAllByText("TestLoader");
+    });
 });
 
 describe("Loader", () => {
