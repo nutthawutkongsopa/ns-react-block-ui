@@ -9,6 +9,7 @@ const BlockUI: React.FC<BlockUIProps> = ({
     children = <></>,
     overlayStyle = {},
     blocking = false,
+    mode = "contain",
     ...props
 }) => {
     const [overlayAnimateClass, setOverlayAnimateClass] = useState("")
@@ -35,7 +36,7 @@ const BlockUI: React.FC<BlockUIProps> = ({
         }
     }, [blocking])
     return (
-        <div className={`ns-block-ui ${isBlocking ? "blocking" : ""} ${props.className || ""}`} aria-busy={isBlocking} ref={refEl}>
+        <div className={`ns-block-ui ${mode === "stretch" ? "stretch" : ""} ${isBlocking ? "blocking" : ""} ${props.className || ""}`} aria-busy={isBlocking} ref={refEl}>
             {children}
             {isBlocking && <div className={`ns-block-ui-container ${overlayAnimateClass}`}>
                 <div className={`ns-block-ui-overlay`} style={overlayStyle}></div>
