@@ -87,4 +87,4 @@ BlockUI Context Data
 ### Compatible Version ⚖️
 | Version | React Version | Node Version |
 |---------|---------------|--------------|
-| 0.1.4   | 17.0.0        | 14.0.0       |
+| 0.1.8   | 16.13.1       | >= 14.0.0    |
