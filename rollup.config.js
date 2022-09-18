@@ -1,4 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve";
+import { terser } from 'rollup-plugin-terser';
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
@@ -14,12 +15,12 @@ export default [
             {
                 file: packageJson.main,
                 format: "cjs",
-                sourcemap: true,
+                sourcemap: "inline"
             },
             {
                 file: packageJson.module,
                 format: "esm",
-                sourcemap: true,
+                sourcemap: "inline"
             },
         ],
         plugins: [
@@ -29,7 +30,8 @@ export default [
             }),
             resolve(),
             commonjs(),
-            typescript({ tsconfig: "./tsconfig.json" }),
+            typescript({ tsconfig: "./tsconfig.json", sourceMap: true, inlineSources: true }),
+            terser()
         ],
     },
     {
