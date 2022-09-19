@@ -3,7 +3,9 @@ A react component for blocking UI
 <hr/>
 
 ### Installation 🛠️
-`npm install ns-react-block-ui`&nbsp;&nbsp;
+```console
+npm install ns-react-block-ui
+```
 [![Npm package total downloads](https://badgen.net/npm/dt/ns-react-block-ui)](https://npmjs.com/package/ns-react-block-ui)
 
 ### Basic Using ✅
