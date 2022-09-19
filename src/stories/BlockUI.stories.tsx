@@ -53,6 +53,13 @@ StretchMode.args = {
   loader: "default"
 };
 
+export const FullScreenMode = Template.bind({});
+FullScreenMode.args = {
+  blocking: true,
+  mode: "full-screen",
+  loader: "default"
+};
+
 export const CustomOverayStyle = Template.bind({});
 CustomOverayStyle.args = {
   blocking: true,

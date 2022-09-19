@@ -1,7 +1,6 @@
 .ns-block-ui {
-    width: fit-content;
-    height: fit-content;
     position: relative;
+    overflow: inherit;
 
     .ns-block-ui-container {
         width: 100%;
@@ -15,6 +14,7 @@
         overflow: hidden;
         border-radius: inherit;
         opacity: 0;
+        z-index: 999;
 
         .ns-block-ui-overlay {
             width: 100%;
@@ -35,8 +35,25 @@
             text-align: center;
             transform: translateY(-50%);
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+
+            .ns-block-ui-loader {
+                position: relative;
+            }
+
+            .ns-block-ui-message {
+                text-align: center;
+                margin-top: .5rem;
+                color: #3B3B3B;
+            }
         }
     }
+}
+
+.ns-block-ui.contain {
+    width: fit-content;
+    height: fit-content;
 }
 
 .ns-block-ui.stretch {
@@ -45,9 +62,22 @@
     border-radius: inherit;
 }
 
-.ns-block-ui.blocking {
-    overflow: hidden;
+.ns-block-ui.full-screen {
+    width: 100%;
+    height: 100%;
+}
 
+.ns-block-ui.blocking.full-screen {
+    .ns-block-ui-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.ns-block-ui.blocking {
     .ns-block-ui-container:not(.fadeout) {
         opacity: 1;
     }
@@ -62,6 +92,14 @@
         animation-name: fadeOutOverlay;
         animation-duration: 100ms;
     }
+}
+
+body:has(.ns-block-ui.blocking.full-screen.noscroll) {
+    overflow: hidden;
+}
+
+.ns-block-ui.blocking.noscroll:not(.full-screen) {
+    overflow: hidden;
 }
 
 .loading-indicator {

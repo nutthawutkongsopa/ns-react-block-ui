@@ -7,7 +7,9 @@ export interface BlockUIPropsBase {
     loader?: "default" | React.ReactNode;
     style?: React.CSSProperties;
     className?: string;
-    mode?: "contain" | "stretch"
+    mode?: "contain" | "stretch" | "full-screen";
+    cursor?: "inherit" | "wait" | "default";
+    hideScroll?: boolean;
 }
 
 export interface BlockUIProps extends BlockUIPropsBase {

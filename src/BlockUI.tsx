@@ -45,14 +45,22 @@ const BlockUI: React.FC<BlockUIProps> = ({
         }
     }, [blocking])
     return (
-        <div className={`ns-block-ui ${mode === "stretch" ? "stretch" : ""} ${isBlocking ? "blocking" : ""} ${props.className || ""}`} aria-busy={isBlocking} ref={refEl}>
+        <div className={`ns-block-ui ${mode || "contain"} ${isBlocking ? "blocking" : ""} ${props.className || ""} ${props.hideScroll ? "noscroll" : ""}`} aria-busy={isBlocking} ref={refEl}
+            style={{ ...(props.style || {}) }}>
             {children}
-            {isBlocking && <div className={`ns-block-ui-container ${overlayAnimateClass}`}>
+            {isBlocking && <div className={`ns-block-ui-container ${overlayAnimateClass}`} style={{ cursor: props.cursor || "inherit" }}>
                 <div className={`ns-block-ui-overlay`} style={(overlayStyle || {})}></div>
-                <div className={`ns-block-ui-loader-container`}>
-                    {resolveLoader()}
-                    {message}
+                <div className="ns-block-ui-loader-container">
+                    <div className={`ns-block-ui-loader`}>
+                        {resolveLoader()}
+                    </div>
+                    {
+                        message && <div className="ns-block-ui-message">
+                            {message}
+                        </div>
+                    }
                 </div>
+
             </div>
             }
         </div>

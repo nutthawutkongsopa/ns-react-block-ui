@@ -21,7 +21,7 @@ describe("BlockUI", () => {
         </BlockUI>).getAllByText("test message");
     });
 
-    test("loading message don't showing", () => {
+    test("loading message don't showing on default status", () => {
         !render(<BlockUI message="test message" blocking={true}>
             <div>child1</div>
         </BlockUI>).getAllByText("test message");
