@@ -73,7 +73,9 @@ BlockUI Properties
     loader?: "default" | ReactNode;
     style?: CSSProperties;
     className?: string;
-    mode?: "contain" | "stretch"
+    mode?: "contain" | "stretch" | "full-screen";
+    cursor?: "inherit" | "wait" | "default";
+    hideScroll?: boolean;
 }
 ```
 BlockUI Context Data
