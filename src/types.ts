@@ -8,7 +8,7 @@ export interface BlockUIPropsBase {
     style?: React.CSSProperties;
     className?: string;
     mode?: "contain" | "stretch" | "full-screen";
-    cursor?: "inherit" | "wait" | "default";
+    cursor?: "inherit" | "wait" | "default" | "progress" | "not-allowed";
     hideScroll?: boolean;
 }
 
