@@ -41,7 +41,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BlockUIProvider loader="default" mode="stretch"> //use stretch mode for block full screen
+    <BlockUIProvider loader="default">
       <App />
     </BlockUIProvider>
   </React.StrictMode>
