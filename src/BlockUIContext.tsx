@@ -14,7 +14,7 @@ const BlockUIProvider: React.FC<BlockUIProps> = ({ children, ...props }) => {
 
     return (
         <BlockUIContext.Provider value={{ data, setBlockUI: setContextData }}>
-            <BlockUI {...{ ...props, ...data }}>
+            <BlockUI {...{ ...props, mode: props.mode || "full-screen", ...data }}>
                 {children}
             </BlockUI>
         </BlockUIContext.Provider>
