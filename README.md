@@ -2,6 +2,9 @@
 A react component for blocking UI
 <hr/>
 
+### Document
+https://nutthawutkongsopa.github.io/ns-react-block-ui
+
 ### Installation 🛠️
 ```console
 npm install ns-react-block-ui
