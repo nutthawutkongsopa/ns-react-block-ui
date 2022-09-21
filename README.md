@@ -1,5 +1,5 @@
 # ns-react-block-ui 
-A react component for blocking UI
+A react component for blocking UI.
 <hr/>
 
 ### Document
@@ -17,17 +17,8 @@ import { BlockUI } from "ns-react-block-ui";
 ```
 ```javascript
 <BlockUI blocking={isBlocking}>
-  <div
-    style={{
-      border: '1px solid',
-      height: '300px',
-      width: '300px'
-    }}
-  >
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit.Doloribus repellat, ducimus exercitationem error minus beatae voluptatibus, provident recusandae cumque maxime dolore assumenda ipsum sunt debitis dolorum aut sit! Quas, explicabo.
-    </p>
-  </div>
+  ...
+  <OtherComponent />
 </BlockUI>
 ```
 ### Global Blocking (Context) 🌟
@@ -56,17 +47,17 @@ SomeComponent.js
 import { useBlockUIContext } from 'ns-react-block-ui'
 
 SomeComponent = () => {
-    const { setBlockUI } = useBlockUIContext();
+  const { setBlockUI } = useBlockUIContext();
+  const blockUI = () => {
+    setBlockUI({ blocking: true });
+  };
 
-    return (
+  return (
     <>
-        <button onClick={() => {
-            setBlockUI({ blocking: true })
-            setTimeout(() => setBlockUI({ blocking: false }), 5000)
-        }} >Block Screen</button>
+      <button onClick={() => blockUI()}>Block Screen</button>
     </>
-    )
-}
+  );
+};
 ```
 ### Properties 🍀
 BlockUI Properties
@@ -93,7 +84,7 @@ BlockUI Context Data
 ```
 ### Compatible Version ⚖️
 | Version | React Version | Node Version |
-|---------|---------------|--------------|
+| ------- | ------------- | ------------ |
 | 0.1.8   | 16.13.1       | >=14.0.0     |
 | 0.1.11  | 16.13.1       | >=14.0.0     |
 | 0.2.4   | 16.13.1       | >=14.0.0     |
