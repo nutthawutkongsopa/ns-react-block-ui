@@ -1,0 +1,155 @@
+import { Source, ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
+
+import { BlockUI } from "../BlockUI";
+
+<Meta
+  title="Components/BlockUI"
+  component={BlockUI}
+  parameters={
+    {
+      //viewMode: "Docs",
+      //previewTabs: {
+      //canvas: { hidden: true },
+      //},
+    }
+  }
+/>
+
+export const Template = (args) => (
+  <BlockUI {...args}>
+    <div
+      style={{
+        width: "300px",
+        height: "200px",
+        border: "1px solid",
+        padding: "1rem",
+      }}
+    >
+      <h3>The component which you want to block</h3>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+        repellat, ducimus exercitationem error minus beatae voluptatibus,
+        provident recusandae cumque maxime dolore assumenda ipsum sunt debitis
+        dolorum aut sit! Quas, explicabo.
+      </p>
+    </div>
+  </BlockUI>
+);
+
+## BlockUI Component
+
+<br />
+
+<Story name="Default" args={{}}>
+  {Template.bind({})}
+</Story>
+
+<br />
+<br />
+
+#### Usage
+
+<Source
+  language="jsx"
+  dark
+  format={true}
+  code={`
+     <BlockUI blocking={isBlocking}>
+        ...
+        <OtherComponent />
+     </BlockUI>
+  `}
+/>
+
+<ArgsTable of={BlockUI} />
+
+### Blocking
+
+<br />
+
+<Story
+  name="Blocking"
+  args={{
+    blocking: true,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Source
+  language="jsx"
+  dark
+  format={true}
+  code={`
+     <BlockUI blocking={isBlocking}>
+        ...
+        <OtherComponent />
+     </BlockUI>
+  `}
+/>
+
+### Blocking with loader
+
+<br />
+
+<Story
+  name="Blocking with Loader"
+  args={{
+    blocking: true,
+    loader: "default",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Source
+  language="jsx"
+  dark
+  format={true}
+  code={`
+     <BlockUI blocking={isBlocking} loader="default">
+        ...
+        <OtherComponent />
+     </BlockUI>
+  `}
+/>
+
+### Other Mode
+
+<br />
+
+<Story
+  name="Other Mode"
+  args={{
+    blocking: true,
+    loader: "default",
+    mode: "stretch",
+    overlayStyle: {
+        background: "black",
+        opacity: .25
+    }
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<br/>
+<b>Note:</b> On "stratch" mode the component will be expand size to parent
+node (width 100%, height 100%). but "full-screen" mode will
+be blocking full page.
+
+<Source
+  language="jsx"
+  dark
+  format={true}
+  code={`
+     <BlockUI blocking={isBlocking} loader="default" mode="stretch" cursor="wait" 
+      overlayStyle={{
+        background: "black",
+        opacity: .25
+     }}>
+        ...
+        <OtherComponent />
+     </BlockUI>
+  `}
+/>

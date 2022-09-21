@@ -1,0 +1,111 @@
+import { Source, ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
+
+import { BlockUI } from "../BlockUI";
+
+<Meta
+  title="Introduction"
+  parameters={{
+    viewMode: "docs",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# NS React Block UI
+
+A react component for blocking UI.
+
+[![Npm package total downloads](https://badgen.net/npm/dt/ns-react-block-ui)](https://npmjs.com/package/ns-react-block-ui)
+
+<hr />
+
+### Installation 🛠️
+
+```console
+npm install ns-react-block-ui
+```
+
+### Basic Using ✅
+
+```jsx
+import { BlockUI } from "ns-react-block-ui";
+```
+
+```jsx
+<BlockUI blocking={isBlocking}>
+  ...
+  <OtherComponent />
+</BlockUI>
+```
+
+### Global Blocking (Context) 🌟
+
+index.js
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.scss';
+import App from './App';
+import { BlockUIProvider } from 'ns-react-block-ui'
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <BlockUIProvider loader="default">
+      <App />
+    </BlockUIProvider>
+  </React.StrictMode>
+);
+
+```
+
+SomeComponent.js
+
+```jsx
+import { useBlockUIContext } from "ns-react-block-ui";
+
+SomeComponent = () => {
+  const { setBlockUI } = useBlockUIContext();
+  const blockUI = () => {
+    setBlockUI({ blocking: true });
+  };
+
+  return (
+    <>
+      <button onClick={() => blockUI()}>Block Screen</button>
+    </>
+  );
+};
+```
+
+### Properties 🍀
+
+BlockUI Properties
+
+```javascript
+{
+    blocking?: boolean;
+    message?: string | ReactNode;
+    overlayStyle?: CSSProperties;
+    loader?: "default" | ReactNode;
+    style?: CSSProperties;
+    className?: string;
+    mode?: "contain" | "stretch" | "full-screen";
+    cursor?: "inherit" | "wait" | "default" | "progress" | "not-allowed";
+    hideScroll?: boolean;
+}
+```
+
+BlockUI Context Data
+
+```javascript
+{
+    blocking?: boolean;
+    message?: string;
+    loader?: ReactNode;
+}
+```
