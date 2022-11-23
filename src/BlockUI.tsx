@@ -24,7 +24,7 @@ const BlockUI: React.FC<BlockUIProps> = ({
             return <></>
     }
 
-    const isBlocking = !![statusStack][0]
+    const isBlocking = !!statusStack[0];
 
     useEffect(() => {
         if (blocking) {
