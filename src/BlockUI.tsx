@@ -3,7 +3,6 @@ import DefaultLoader from './Loader';
 import { BlockUIProps, BlockUIPropsBase } from './types';
 import "./style.scss"
 
-let currentState: boolean
 const BlockUI: React.FC<BlockUIProps> = ({
     message = "",
     children = <></>,
@@ -13,9 +12,8 @@ const BlockUI: React.FC<BlockUIProps> = ({
     ...props
 }) => {
     const [overlayAnimateClass, setOverlayAnimateClass] = useState("")
-    const [isBlocking, setIsBlocking] = useState(blocking);
+    const [statusStack, setStatusStack] = useState<boolean[]>([]);
     const refEl = useRef<HTMLDivElement>(null);
-    currentState = blocking;
 
     const resolveLoader = () => {
         if (props.loader === "default")
@@ -26,6 +24,8 @@ const BlockUI: React.FC<BlockUIProps> = ({
             return <></>
     }
 
+    const isBlocking = !![statusStack][0]
+
     useEffect(() => {
         if (blocking) {
             if (refEl.current?.contains(document.activeElement)) {
@@ -35,14 +35,15 @@ const BlockUI: React.FC<BlockUIProps> = ({
                 }
             }
             setOverlayAnimateClass("fadein");
-            setIsBlocking(true);
+            setStatusStack(prev => [...prev, true])
             setTimeout(() => {
                 setOverlayAnimateClass("");
             }, 200);
         } else {
             setOverlayAnimateClass("fadeout");
             setTimeout(() => {
-                setIsBlocking(currentState);
+                statusStack.shift()
+                setStatusStack([...statusStack])
             }, 300);
         }
     }, [blocking])
