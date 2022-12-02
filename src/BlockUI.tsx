@@ -42,8 +42,9 @@ const BlockUI: React.FC<BlockUIProps> = ({
         } else {
             setOverlayAnimateClass("fadeout");
             setTimeout(() => {
-                statusStack.shift()
-                setStatusStack([...statusStack])
+                const stack = [...statusStack]
+                stack.shift()
+                setStatusStack([...stack])
             }, 300);
         }
     }, [blocking])
