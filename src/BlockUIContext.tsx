@@ -9,7 +9,7 @@ const useBlockUIContext = () => useContext(BlockUIContext)
 const BlockUIProvider: React.FC<BlockUIProps> = ({ children, ...props }) => {
     const [data, setData] = useState<BlockUIContextData>({})
     const setContextData = (data: BlockUIContextData) => {
-        setData(data);
+        setData({ ...data });
     }
 
     return (
