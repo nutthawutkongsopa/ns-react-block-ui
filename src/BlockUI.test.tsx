@@ -27,6 +27,13 @@ describe("BlockUI", () => {
         </BlockUI>).getAllByText("test message");
     });
 
+    test("loading message must not showing on false status", () => {
+       const msg = render(<BlockUI message="test message" blocking={false}>
+            <div>child1</div>
+        </BlockUI>).queryByText("test message");
+        expect(msg).toBeNull()
+    });
+
     test("renders the BlockUI component with defaultProps", () => {
         setBlockUIDefaultProps({ message: "This is default message" })
         render(<BlockUI blocking={true} />).getAllByText("This is default message");
