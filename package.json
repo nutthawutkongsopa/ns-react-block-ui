@@ -1,6 +1,6 @@
 {
   "name": "ns-react-block-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A react component for blocking UI.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
