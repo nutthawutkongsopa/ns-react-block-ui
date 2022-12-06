@@ -15,6 +15,7 @@ const BlockUI: React.FC<BlockUIProps> = ({
     const [statusStack, setStatusStack] = useState<boolean[]>([]);
     const refEl = useRef<HTMLDivElement>(null);
     const refFirstLoad = useRef(true)
+    const refStatusStack = useRef<boolean[]>([])
 
     const resolveLoader = () => {
         if (props.loader === "default")
@@ -38,6 +39,7 @@ const BlockUI: React.FC<BlockUIProps> = ({
             }
             setOverlayAnimateClass("fadein");
             setStatusStack(prev => [...prev, true])
+            refStatusStack.current = [...refStatusStack.current, true]
             setTimeout(() => {
                 setOverlayAnimateClass("");
             }, 200);
@@ -45,9 +47,10 @@ const BlockUI: React.FC<BlockUIProps> = ({
             if (!refFirstLoad.current) {
                 setOverlayAnimateClass("fadeout");
                 setTimeout(() => {
-                    const stack = [...statusStack]
+                    const stack = [...refStatusStack.current]
                     stack.shift()
                     setStatusStack([...stack])
+                    refStatusStack.current = [...stack]
                 }, 300);
             }
         }
